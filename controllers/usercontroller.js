@@ -7,11 +7,15 @@ exports.createuser=(req,res)=>{
     const userdetial =req.body;
     
     user.sign(userdetial,(err,result)=>{
-        if(err){
-            res.status(500).json({
-                error:"error "
-            })
+        if(err==="User already exists"){
+            res.status(409).json({
+                error: "User already exists"
+              });
             return;
+        }else if(err){
+            res.status(500).json({
+                error: "error"
+              });
         }
         
         res.status(200).json({
