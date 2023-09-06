@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const itemRoutes = require('./routes/itemRoutes');
+const userRoutes =require('./routes/userRoutes')
 const db = require('./db');
 const cors = require('cors')
 
@@ -17,6 +18,7 @@ app.use(bodyParser.json());
 
 // Use the itemRoutes for handling item-related routes
 app.use('/items', itemRoutes);
+app.use('/user',userRoutes)
 
 // Start the server
 const port = process.env.PORT || 3000;

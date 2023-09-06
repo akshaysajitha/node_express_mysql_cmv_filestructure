@@ -18,9 +18,12 @@ exports.getItemById = (req, res) => {
       res.status(500).json({ error: 'Internal Server Error' });
       return;
     }
-    if (!item) {
+    if (!item ) {
       res.status(404).json({ error: 'Item not found' });
       return;
+    }else if(item<1){
+        res.status(404).json({ error: 'Item not found' });
+        return;
     }
     res.status(200).json(item);
   });
